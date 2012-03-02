@@ -15,19 +15,19 @@ Place this file into your load-path directory. like this,
  If you want to bind Hot-keys, add setting lines like below.
 
     (global-set-key [f9] 'maximize-toggle-frame-vmax)
-    (global-set-key [f11] 'maximize-toggle-frame-hmax)`
+    (global-set-key [f11] 'maximize-toggle-frame-hmax)
 
 ## Screen shots
 
 * normal
-![normal](images/normal.jpg)
+![normal](https://github.com/izawa/maximize/raw/master/images/normal.jpg)
 
 * maximized vertically
-![vertical](images/maximize-vertical.jpg)
+![vertical](https://github.com/izawa/maximize/raw/master/images/maximize-vertical.jpg)
 
 * maximized horizontally
-![horizontal](images/maximize-horizontal.jpg)
+![horizontal](https://github.com/izawa/maximize/raw/master/images/maximize-horizontal.jpg)
 
 * maximized both (like a full screen)
-![both](images/maximize-both.jpg)
+![both](https://github.com/izawa/maximize/raw/master/images/maximize-both.jpg)
 
