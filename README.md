@@ -5,7 +5,7 @@ Maximize your emacs frames vertically or horizontally.
 ## How to install:
 ### Clone file into your emacs directory
     cd ~/.emacs.d
-    git git clone git@github.com:izawa/maximize.git
+    git clone git@github.com:izawa/maximize.git
 
 ### Add load path subdirectory recursively
     (let ((default-directory "~/.emacs.d/"))
