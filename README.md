@@ -3,15 +3,19 @@
 Maximize your emacs frames vertically or horizontally.
 
 ## How to install:
-Place this file into your load-path directory. like this,
-`(setq load-path (append (list (expand-file-name "~/elisp/")) load-path))`
+### Clone file into your emacs directory
+    cd ~/.emacs.d
+    git git clone git@github.com:izawa/maximize.git
 
-    % cp maximize.el ~/elisp
+### Add load path subdirectory recirsively
+    (let ((default-directory "~/.emacs.d/"))
+      (normal-top-level-add-subdirs-to-load-path))
 
- and add this line into your .emacs.
+### Add require into your .emacs.
 
     (require 'maximize)
 
+### Additional setting
  If you want to bind Hot-keys, add setting lines like below.
 
     (global-set-key [f9] 'maximize-toggle-frame-vmax)
