@@ -7,7 +7,7 @@ Maximize your emacs frames vertically or horizontally.
     cd ~/.emacs.d
     git git clone git@github.com:izawa/maximize.git
 
-### Add load path subdirectory recirsively
+### Add load path subdirectory recursively
     (let ((default-directory "~/.emacs.d/"))
       (normal-top-level-add-subdirs-to-load-path))
 
