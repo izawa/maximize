@@ -20,14 +20,18 @@ Place this file into your load-path directory. like this,
 ## Screen shots
 
 * normal
+
 ![normal](https://github.com/izawa/maximize/raw/master/images/normal.jpg)
 
 * maximized vertically
+
 ![vertical](https://github.com/izawa/maximize/raw/master/images/maximize-vertical.jpg)
 
 * maximized horizontally
+
 ![horizontal](https://github.com/izawa/maximize/raw/master/images/maximize-horizontal.jpg)
 
 * maximized both (like a full screen)
+
 ![both](https://github.com/izawa/maximize/raw/master/images/maximize-both.jpg)
 
