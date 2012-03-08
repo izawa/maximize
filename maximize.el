@@ -43,6 +43,8 @@
 
 (provide 'maximize)
 (defvar maximize-window-alist nil)
+(defvar x-pixel-ratio 0.96)
+(defvar y-pixel-ratio 0.9)
 
 
 (defun maximize-toggle-frame-vmax ()
@@ -72,7 +74,7 @@
 	    (set-frame-position (selected-frame) 
 				(car (cdr (assoc 'left (assoc (intern (cdr (assoc 'window-id (frame-parameters (selected-frame)))))
 							      maximize-window-alist)))) 0)) 
-	  (set-frame-height (selected-frame) (/ (x-display-pixel-height) (frame-char-height)))
+	  (set-frame-height (selected-frame) (round (* y-pixel-ratio (/ (x-display-pixel-height) (frame-char-height)))))
 	  (setcdr (assoc 'vmax-flag
 			 (assoc (intern (cdr (assoc 'window-id (frame-parameters (selected-frame))))) maximize-window-alist)) (cons t nil)))
       (if current-hmax-flag
@@ -109,7 +111,7 @@
 	    (set-frame-position (selected-frame) 
 				0 (car (cdr (assoc 'top (assoc (intern (cdr (assoc 'window-id (frame-parameters (selected-frame)))))
 							       maximize-window-alist)))))) 
-	  (set-frame-width (selected-frame) (/ (x-display-pixel-width) (frame-char-width)))
+	  (set-frame-width (selected-frame) (round (* x-pixel-ratio (/ (x-display-pixel-width) (frame-char-width)))))
 	  (setcdr (assoc 'hmax-flag
 			 (assoc (intern (cdr (assoc 'window-id (frame-parameters (selected-frame))))) maximize-window-alist)) (cons t nil)))
       (if current-vmax-flag
