@@ -47,6 +47,28 @@
 (defvar y-pixel-ratio 0.9)
 
 
+(defun maximize--frame-height (frame)
+  "Return a vertical maximum text height for FRAME, in whole lines.
+Honor `y-pixel-ratio', but leave room for frame decorations within the
+monitor work area when its geometry is available.  Round down so that
+an extra line cannot extend the frame past the available height."
+  (let* ((height (* y-pixel-ratio (x-display-pixel-height)))
+         (workarea (and (fboundp 'frame-monitor-attributes)
+                        (cdr (assq 'workarea
+                                   (frame-monitor-attributes frame))))))
+    (when (and workarea
+               (fboundp 'frame-outer-height)
+               (fboundp 'frame-text-height))
+      ;; `set-frame-height' sets the text area, whereas the work area
+      ;; must accommodate the title bar, tool bar and borders as well.
+      (setq height
+            (min height
+                 (- (nth 3 workarea)
+                    (- (frame-outer-height frame)
+                       (frame-text-height frame))))))
+    (max 1 (floor (/ height (frame-char-height frame))))))
+
+
 (defun maximize-toggle-frame-vmax ()
   (interactive)
   (let* ((current-my-window 
@@ -74,7 +96,7 @@
 	    (set-frame-position (selected-frame) 
 				(car (cdr (assoc 'left (assoc (intern (cdr (assoc 'window-id (frame-parameters (selected-frame)))))
 							      maximize-window-alist)))) 0)) 
-	  (set-frame-height (selected-frame) (round (* y-pixel-ratio (/ (x-display-pixel-height) (frame-char-height)))))
+	  (set-frame-height (selected-frame) (maximize--frame-height (selected-frame)))
 	  (setcdr (assoc 'vmax-flag
 			 (assoc (intern (cdr (assoc 'window-id (frame-parameters (selected-frame))))) maximize-window-alist)) (cons t nil)))
       (if current-hmax-flag

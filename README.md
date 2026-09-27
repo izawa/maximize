@@ -21,6 +21,16 @@ Maximize your emacs frames vertically or horizontally.
     (global-set-key [f9] 'maximize-toggle-frame-vmax)
     (global-set-key [f11] 'maximize-toggle-frame-hmax)
 
+`y-pixel-ratio` (default `0.9`) controls the requested vertical text height
+as a fraction of the display height.  When monitor geometry is available,
+the height is capped to the monitor work area minus the title bar, tool bar,
+and borders, and rounded down to whole lines.  This prevents the frame from
+extending below the usable screen area on Emacs 31.1 / macOS 26.
+
+## Tests
+
+    emacs -Q --batch -L . -l test/maximize-test.el -f ert-run-tests-batch-and-exit
+
 ## Screen shots
 
 * normal
